@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Bí mật Valentine</title>
+
+<style>
+
+body{
+margin:0;
+background:#ffb6c1;
+font-family:sans-serif;
+text-align:center;
+color:white;
+}
+
+.trang{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:20px;
+}
+
+button{
+padding:15px 25px;
+font-size:18px;
+border:none;
+border-radius:12px;
+background:white;
+color:#ff4d88;
+margin:5px;
+}
+
+input{
+padding:10px;
+font-size:16px;
+}
+
+.progress{
+width:220px;
+height:22px;
+background:white;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:#ff4d88;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="start" class="trang">
+
+<h1>💗 Một bí mật dành cho anh 💗</h1>
+
+<button onclick="vao()">Bấm vào đây</button>
+
+</div>
+
+<div id="pass" class="trang" style="display:none">
+
+<h2>Nhập mật khẩu</h2>
+
+<input type="password" id="mk">
+
+<br><br>
+
+<button onclick="check()">Xác nhận</button>
+
+</div>
+
+<div id="quiz" class="trang" style="display:none">
+
+<h2 id="cauhoi"></h2>
+
+<button onclick="next()">Có 💗</button>
+
+<button onclick="next()">Rất yêu 💗</button>
+
+</div>
+
+<div id="gift" class="trang" style="display:none">
+
+<h2>Mở hộp quà của em 🎁</h2>
+
+<button onclick="mo()">Nhấn mở</button>
+
+<div class="progress">
+
+<div id="bar" class="bar"></div>
+
+</div>
+
+</div>
+
+<div id="thu" class="trang" style="display:none">
+
+<h1>Gửi anh yêu 💌</h1>
+
+<img src="https://i.imgur.com/7kQEsHU.png" width="200">
+
+<p style="max-width:400px">
+
+Cảm ơn anh vì đã bước vào cuộc đời em.  
+Có thể em không hoàn hảo nhưng em thật lòng yêu anh.  
+Em hy vọng chúng ta sẽ có thật nhiều Valentine bên nhau.
+
+Em yêu anh rất nhiều 💗
+
+</p>
+
+<audio autoplay loop>
+
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+
+</audio>
+
+</div>
+
+<script>
+
+function vao(){
+
+document.getElementById("start").style.display="none"
+
+document.getElementById("pass").style.display="flex"
+
+}
+
+function check(){
+
+let mk=document.getElementById("mk").value
+
+if(mk=="iloveyou"){
+
+document.getElementById("pass").style.display="none"
+
+document.getElementById("quiz").style.display="flex"
+
+hien()
+
+}else{
+
+alert("Sai mật khẩu rồi :(")
+
+}
+
+}
+
+let cau=[
+
+"Anh có yêu em không?",
+
+"Anh có nhớ em không?",
+
+"Anh có muốn ở bên em lâu dài không?",
+
+"Anh có thích ôm em không?",
+
+"Anh có muốn đi chơi với em không?",
+
+"Anh có muốn chăm sóc em không?",
+
+"Anh có thích nghe em nói chuyện không?",
+
+"Anh có muốn xem phim với em không?",
+
+"Anh có muốn nắm tay em không?",
+
+"Anh có yêu em thật lòng không?"
+
+]
+
+let i=0
+
+function hien(){
+
+document.getElementById("cauhoi").innerText=cau[i]
+
+}
+
+function next(){
+
+i++
+
+if(i<cau.length){
+
+hien()
+
+}else{
+
+document.getElementById("quiz").style.display="none"
+
+document.getElementById("gift").style.display="flex"
+
+}
+
+}
+
+let click=0
+
+function mo(){
+
+click++
+
+let percent=(click/10)*100
+
+document.getElementById("bar").style.width=percent+"%"
+
+if(click>=10){
+
+document.getElementById("gift").style.display="none"
+
+document.getElementById("thu").style.display="flex"
+
+}
+
+}
+
+
+</script>
+
+</body>
+</html>
